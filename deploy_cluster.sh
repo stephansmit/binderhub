@@ -10,3 +10,19 @@ SUBNET_ID=$(az network vnet subnet show \
     --name binderhub_subnet \
     --query id \
     --output tsv)
+
+az aks create \
+    --name binderhub_cluster \
+    --resource-group binderhub \
+    --ssh-key-value $PUBLIC_KEY \
+    --node-count 3 \
+    --node-vm-size Standard_D2s_v3 \
+    --service-principal $SP_ID \
+    --client-secret $SP_PASSWD \
+    --dns-service-ip 10.0.0.10 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --network-plugin azure \
+    --network-policy azure \
+    --service-cidr 10.0.0.0/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --output table
