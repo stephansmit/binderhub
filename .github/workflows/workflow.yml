@@ -7,33 +7,33 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+#     - name: Azure Login
+#       uses: azure/login@v1
+#       with:
+#         creds: ${{ secrets.AZURE_CREDENTIALS }}
       
-    - name: Checkout
-      uses: actions/checkout@v1
+#     - name: Checkout
+#       uses: actions/checkout@v1
     
-    - name: Install kubectl
-      uses: azure/setup-kubectl@v1
-      with:
-        version: 'v1.19.4' # default is latest stable
-      id: install_kubectl
+#     - name: Install kubectl
+#       uses: azure/setup-kubectl@v1
+#       with:
+#         version: 'v1.19.4' # default is latest stable
+#       id: install_kubectl
     
-    - name: Install helm
-      uses: azure/setup-helm@v1
-      with:
-        version: '3.4.1' # default is latest stable
-      id: install_helm
+#     - name: Install helm
+#       uses: azure/setup-helm@v1
+#       with:
+#         version: '3.4.1' # default is latest stable
+#       id: install_helm
     
-    - name: Azure CLI script
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.0.72
-        inlineScript: |
-          chmod +x $GITHUB_WORKSPACE/deploy_kubernetes.sh
-          $GITHUB_WORKSPACE/deploy_kubernetes.sh
+#     - name: Azure CLI script
+#       uses: azure/CLI@v1
+#       with:
+#         azcliversion: 2.0.72
+#         inlineScript: |
+#           chmod +x $GITHUB_WORKSPACE/deploy_kubernetes.sh
+#           $GITHUB_WORKSPACE/deploy_kubernetes.sh
     
     - name: Deploy Jupyterhub
       run: |
