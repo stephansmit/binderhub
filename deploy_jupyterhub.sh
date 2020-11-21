@@ -1,5 +1,5 @@
 #!/bin/bash
-kubectl get node
+sudo kubectl get node
 
 RANDOM_HEX=$(openssl rand -hex 32)
 printf "proxy:\n\tsecretToken: \"$RANDOM_HEX\"" > config.yaml
