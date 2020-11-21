@@ -26,7 +26,7 @@ jobs:
     - name: Install kubectl
       uses: azure/setup-kubectl@v1
       with:
-        version: '1.19.4'
+        version: '1.15.2'
       id: install_kubectl
     
     - name: Install helm
