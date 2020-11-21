@@ -1,10 +1,9 @@
 #!/bin/bash
 echo $USER
-kubectl --kubeconfig="/root/.kube/config" get node
-kubectl --kubeconfig="/root/.kube/config" config view
+kubectl --kubeconfig="~/.kube/config" get node
+kubectl --kubeconfig="~/.kube/config" config view
 
-mkdir ~/.kube/
-cp /root/.kube/config ~/.kube/config
+
 RANDOM_HEX=$(openssl rand -hex 32)
 printf "proxy:\n\tsecretToken: \"$RANDOM_HEX\"" > config.yaml
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
