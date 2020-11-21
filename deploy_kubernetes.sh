@@ -11,10 +11,12 @@ SUBNET_ID=$(az network vnet subnet show \
     --query id \
     --output tsv)
 
+echo $PUBLIC_KEY > key.pub
+
 az aks create \
     --name binderhub_cluster \
     --resource-group binderhub \
-    --ssh-key-value $PUBLIC_KEY \
+    --ssh-key-value key.pub \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
     --service-principal $TENANT_ID \
