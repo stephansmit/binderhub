@@ -4,6 +4,8 @@ SUBNET_NAME=binderhubSubnet
 CLUSTER_NAME=binderhubCluster
 SERVICE_PRINCIPAL_NAME=binderhubSP
 
+az ad sp delete --id http://$SERVICE_PRINCIPAL_NAME
+
 az group create \
     --location northeurope \
     --name $RESOURCE_GROUP
