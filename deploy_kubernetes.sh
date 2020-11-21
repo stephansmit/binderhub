@@ -1,3 +1,15 @@
+RESOURCE_GROUP=binderhub
+VNET_NAME=binderhub_vnet
+SUBNET_NAME=binderhub_subnet
+CLUSTER_NAME=binderhub_cluster
+
+az network vnet create \
+    --resource-group $RESOURCE_GROUP \
+    --name $VNET_NAME \
+    --address-prefixes 10.0.0.0/8 \
+    --subnet-name $SUBNET_NAME \
+    --subnet-prefix 10.240.0.0/16
+    
 VNET_ID=$(az network vnet show \
     --resource-group binderhub \
     --name binderhub_vnet \
@@ -5,17 +17,17 @@ VNET_ID=$(az network vnet show \
     --output tsv)
     
 SUBNET_ID=$(az network vnet subnet show \
-    --resource-group binderhub \
-    --vnet-name binderhub_vnet \
-    --name binderhub_subnet \
+    --resource-group $RESOURCE_GROUP \
+    --vnet-name $VNET_NAME \
+    --name $SUBNET_NAME \
     --query id \
     --output tsv)
 
 echo $PUBLIC_KEY > key.pub
 
 az aks create \
-    --name binderhub_cluster \
-    --resource-group binderhub \
+    --name $CLUSTER_NAME \
+    --resource-group $RESOURCE_GROUP \
     --ssh-key-value key.pub \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
