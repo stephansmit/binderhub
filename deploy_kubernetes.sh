@@ -25,6 +25,7 @@ SUBNET_ID=$(az network vnet subnet show \
 
 echo $PUBLIC_KEY > key.pub
 
+
 az aks create \
     --name $CLUSTER_NAME \
     --resource-group $RESOURCE_GROUP \
