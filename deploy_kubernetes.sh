@@ -5,7 +5,7 @@ CLUSTER_NAME=binderhubCluster
 SERVICE_PRINCIPAL_NAME=binderhubSP
 
 az group create \
-    --location northeurope 
+    --location northeurope \
     --name $RESOURCE_GROUP
     
 az network vnet create \
