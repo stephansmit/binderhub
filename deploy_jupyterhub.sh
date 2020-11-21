@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo $USER
 kubectl --kubeconfig="/root/.kube/config" get node
 kubectl --kubeconfig="/root/.kube/config" config view
 
