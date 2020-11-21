@@ -1,6 +1,7 @@
 #!/bin/bash
 
 kubectl --kubeconfig="/root/.kube/config" get node
+kubectl --kubeconfig="/root/.kube/config" config view
 
 mkdir ~/.kube/
 cp /root/.kube/config ~/.kube/config
