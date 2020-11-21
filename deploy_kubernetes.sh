@@ -11,8 +11,8 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
     
 VNET_ID=$(az network vnet show \
-    --resource-group binderhub \
-    --name binderhub_vnet \
+    --resource-group $RESOURCE_GROUP \
+    --name $VNET_NAME \
     --query id \
     --output tsv)
     
