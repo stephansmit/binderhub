@@ -23,13 +23,13 @@ SUBNET_ID=$(az network vnet subnet show \
     --query id \
     --output tsv)
 
-echo $PUBLIC_KEY > key.pub
+echo $PUBLIC_KEY > $GITHUB_WORKSPACE/key.pub
 
 
 az aks create \
     --name $CLUSTER_NAME \
     --resource-group $RESOURCE_GROUP \
-    --ssh-key-value key.pub \
+    --ssh-key-value $GITHUB_WORKSPACE/key.pub \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
     --service-principal=$CLIENT_ID \
