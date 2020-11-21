@@ -4,8 +4,6 @@ SUBNET_NAME=binderhubSubnet
 CLUSTER_NAME=binderhubCluster
 SERVICE_PRINCIPAL_NAME=binderhubSP
 
-az ad sp delete --id http://$SERVICE_PRINCIPAL_NAME
-
 az group create \
     --location northeurope \
     --name $RESOURCE_GROUP
@@ -30,14 +28,14 @@ SUBNET_ID=$(az network vnet subnet show \
     --query id \
     --output tsv)
 
-SP_PASSWD=$(az ad sp create-for-rbac \
+SP_BINDERHUB_PASSWD=$(az ad sp create-for-rbac \
    --name=$SERVICE_PRINCIPAL_NAME \
    --role Contributor \
    --scopes $VNET_ID \
    --query password \
    --output tsv)
 
-SP_ID=$(az ad sp show \
+SP_BINDERHUB_PASSID$(az ad sp show \
    --id http://$SERVICE_PRINCIPAL_NAME \
    --query appId \
    --output tsv)
@@ -48,8 +46,8 @@ az aks create \
     --ssh-key-value=$GITHUB_WORKSPACE/key.pub \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
-    --service-principal=$SP_ID \
-    --client-secret=$SP_PASSWD \
+    --service-principal=$SP_BINDERHUB_PASSID \
+    --client-secret=$SP_BINDERHUB_PASSWD \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --network-plugin azure \
@@ -62,6 +60,3 @@ az aks get-credentials \
              --name $CLUSTER_NAME \
              --resource-group $RESOURCE_GROUP \
              --output table
-
-kubectl get node
-
