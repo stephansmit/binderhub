@@ -23,7 +23,7 @@ SUBNET_ID=$(az network vnet subnet show \
     --query id \
     --output tsv)
 
-echo $PUBLIC_KEY > $GITHUB_WORKSPACE/key.pub
+#echo $PUBLIC_KEY > $GITHUB_WORKSPACE/key.pub
 
 
 az aks create \
