@@ -2,7 +2,12 @@ RESOURCE_GROUP=binderhub
 VNET_NAME=binderhubVnet
 SUBNET_NAME=binderhubSubnet
 CLUSTER_NAME=binderhubCluster
+SERVICE_PRINCIPAL_NAME=binderhubSP
 
+az group create \
+    --location northeurope 
+    --name $RESOURCE_GROUP
+    
 az network vnet create \
     --resource-group $RESOURCE_GROUP \
     --name $VNET_NAME \
@@ -23,8 +28,17 @@ SUBNET_ID=$(az network vnet subnet show \
     --query id \
     --output tsv)
 
-#echo $PUBLIC_KEY > $GITHUB_WORKSPACE/key.pub
+SP_PASSWD=$(az ad sp create-for-rbac \
+   --name=$SERVICE_PRINCIPAL_NAME \
+   --role Contributor \
+   --scopes $VNET_ID \
+   --query password \
+   --output tsv)
 
+SP_ID=$(az ad sp show \
+   --id http://$SERVICE_PRINCIPAL_NAME \
+   --query appId \
+   --output tsv)
 
 az aks create \
     --name $CLUSTER_NAME \
@@ -32,8 +46,8 @@ az aks create \
     --ssh-key-value=$GITHUB_WORKSPACE/key.pub \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
-    --service-principal=$CLIENT_ID \
-    --client-secret=$PASSWORD \
+    --service-principal=$SP_ID \
+    --client-secret=$SP_PASSWD \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --network-plugin azure \
