@@ -62,3 +62,6 @@ az aks get-credentials \
              --name $CLUSTER_NAME \
              --resource-group $RESOURCE_GROUP \
              --output table
+
+mkdir /home/runner/.kube
+cp /root/.kube/config /home/runner/.kube/config
