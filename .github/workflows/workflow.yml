@@ -6,8 +6,6 @@ jobs:
 
   build-and-deploy:
     runs-on: ubuntu-latest
-    container:
-      options: --user normal
     steps:
     - name: Azure Login
       uses: azure/login@v1
