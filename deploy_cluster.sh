@@ -17,8 +17,8 @@ az aks create \
     --ssh-key-value $PUBLIC_KEY \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
-    --service-principal $SP_ID \
-    --client-secret $SP_PASSWD \
+    --service-principal $TENANT_ID \
+    --client-secret $PASSWORD \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --network-plugin azure \
