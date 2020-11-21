@@ -1,7 +1,7 @@
 #!/bin/bash
 echo $USER
-kubectl --kubeconfig="~/.kube/config" get node
-kubectl --kubeconfig="~/.kube/config" config view
+kubectl --kubeconfig="$GITHUB_WORKSPACE/.kube/config" get node
+kubectl --kubeconfig="$GITHUB_WORKSPACE/.kube/config" config view
 
 
 RANDOM_HEX=$(openssl rand -hex 32)
