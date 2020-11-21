@@ -29,7 +29,7 @@ echo $PUBLIC_KEY > $GITHUB_WORKSPACE/key.pub
 az aks create \
     --name $CLUSTER_NAME \
     --resource-group $RESOURCE_GROUP \
-    --ssh-key-value $GITHUB_WORKSPACE/key.pub \
+    --ssh-key-value=$PUBLIC_KEY \
     --node-count 3 \
     --node-vm-size Standard_D2s_v3 \
     --service-principal=$CLIENT_ID \
