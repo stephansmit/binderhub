@@ -1,7 +1,7 @@
 RESOURCE_GROUP=binderhub
-VNET_NAME=binderhub_vnet
-SUBNET_NAME=binderhub_subnet
-CLUSTER_NAME=binderhub_cluster
+VNET_NAME=binderhubVnet
+SUBNET_NAME=binderhubSubnet
+CLUSTER_NAME=binderhubCluster
 
 az network vnet create \
     --resource-group $RESOURCE_GROUP \
