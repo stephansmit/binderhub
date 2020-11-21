@@ -63,5 +63,5 @@ az aks get-credentials \
              --resource-group $RESOURCE_GROUP \
              --output table
 
-mkdir /home/runner/.kube
-cp /root/.kube/config /home/runner/.kube/config
+kubectl get node
+
