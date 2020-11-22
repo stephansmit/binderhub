@@ -44,3 +44,8 @@ az aks create \
     --service-cidr 10.0.0.0/16 \
     --vnet-subnet-id=$SUBNET_ID \
     --output table
+    
+az aks get-credentials \
+         --name $CLUSTER_NAME \
+         --resource-group $RESOURCE_GROUP \
+         --output table
