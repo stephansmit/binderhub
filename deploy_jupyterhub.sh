@@ -6,6 +6,7 @@ export KUBECONFIG="$GITHUB_WORKSPACE/config"
 
 RANDOM_HEX=$(openssl rand -hex 32)
 printf "proxy:\n    secretToken: \"$RANDOM_HEX\"" > config.yaml
+echo $RANDOM_HEX
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 helm repo update
 
@@ -18,3 +19,5 @@ helm upgrade --cleanup-on-fail \
   --create-namespace \
   --version=0.9.0 \
   --values config.yaml
+  
+ kubectl --namespace=jhub get svc proxy-public
