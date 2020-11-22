@@ -41,8 +41,8 @@ jobs:
       with:
         method: kubeconfig
         kubeconfig: $KUBE_CONFIG # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
-
-  id: setcontext
+      id: setcontext
+      
     - name: Deploy Jupyterhub
       run: |
           chmod +x $GITHUB_WORKSPACE/deploy_jupyterhub.sh
