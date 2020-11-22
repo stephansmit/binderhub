@@ -1,8 +1,8 @@
-# RESOURCE_GROUP=binderhub
-# VNET_NAME=binderhubVnet
-# SUBNET_NAME=binderhubSubnet
-# CLUSTER_NAME=binderhubCluster
-# SERVICE_PRINCIPAL_NAME=binderhubSP
+RESOURCE_GROUP=binderhub
+VNET_NAME=binderhubVnet
+SUBNET_NAME=binderhubSubnet
+CLUSTER_NAME=binderhubCluster
+SERVICE_PRINCIPAL_NAME=binderhubSP
 
 # az group create \
 #     --location northeurope \
