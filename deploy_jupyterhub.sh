@@ -1,7 +1,6 @@
 #!/bin/bash
-kubectl --kubeconfig="$GITHUB_WORKSPACE/.kube/config" get node
-kubectl --kubeconfig="$GITHUB_WORKSPACE/.kube/config" config view
-
+kubectl --kubeconfig="$GITHUB_WORKSPACE/config" get node
+kubectl --kubeconfig="$GITHUB_WORKSPACE/config" config view
 
 RANDOM_HEX=$(openssl rand -hex 32)
 printf "proxy:\n\tsecretToken: \"$RANDOM_HEX\"" > config.yaml
