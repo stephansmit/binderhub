@@ -34,8 +34,10 @@ jobs:
         inlineScript: |
           chmod +x $GITHUB_WORKSPACE/deploy_kubernetes.sh
           $GITHUB_WORKSPACE/deploy_kubernetes.sh
-          export KUBE_CONFIG=$(cat /root/.kube/config)
-          echo "::set-env name=KUBE_CONFIG::$KUBE_CONFIG"
+          export KUBE_CONFIG=$(cat /root/.kube/config)         
+          echo "KUBE_CONFIG=$KUBE_CONFIG" >> $GITHUB_ENV
+
+
     - name: Set Context
       uses: azure/k8s-set-context@v1
       with:
