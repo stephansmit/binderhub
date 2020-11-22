@@ -37,7 +37,7 @@ jobs:
           export KUBE_CONFIG=$(cat /root/.kube/config)
           echo "::set-env name=KUBE_CONFIG::$KUBE_CONFIG"
     - name: Set Context
-    - uses: azure/k8s-set-context@v1
+      uses: azure/k8s-set-context@v1
       with:
         method: kubeconfig
         kubeconfig: $KUBE_CONFIG # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
