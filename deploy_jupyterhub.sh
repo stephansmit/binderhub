@@ -3,10 +3,9 @@ kubectl --kubeconfig="$GITHUB_WORKSPACE/config" get node
 kubectl --kubeconfig="$GITHUB_WORKSPACE/config" config view
 
 export KUBECONFIG="$GITHUB_WORKSPACE/config"
+export RANDOM_HEX=$(openssl rand -hex 32)
+envsubst < config.yaml.template > config.yaml
 
-RANDOM_HEX=$(openssl rand -hex 32)
-printf "proxy:\n    secretToken: \"$RANDOM_HEX\"" > config.yaml
-echo $RANDOM_HEX
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 helm repo update
 
