@@ -1,0 +1,7 @@
+proxy:
+  secretToken: "$RANDOM_HEX"
+singleuser:
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["gitpuller", "https://github.com/Fluid-Dynamics-Of-Energy-Systems-Team/RANS_Channel.git", "master", "materials-fa"]
