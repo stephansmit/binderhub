@@ -34,16 +34,16 @@ jobs:
         inlineScript: |
           chmod +x $GITHUB_WORKSPACE/deploy_kubernetes.sh
           $GITHUB_WORKSPACE/deploy_kubernetes.sh
-          export KUBE_CONFIG=$(cat /root/.kube/config)         
-          echo "KUBE_CONFIG=$KUBE_CONFIG" >> $GITHUB_ENV
+          cp /root/.kube/config $GITHUB_WORKSPACE/
+#          export KUBE_CONFIG=$(cat /root/.kube/config)         
+#          echo "KUBE_CONFIG=$KUBE_CONFIG" >> $GITHUB_ENV
 
-
-    - name: Set Context
-      uses: azure/k8s-set-context@v1
-      with:
-        method: kubeconfig
-        kubeconfig: $KUBE_CONFIG # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
-      id: setcontext
+#     - name: Set Context
+#       uses: azure/k8s-set-context@v1
+#       with:
+#         method: kubeconfig
+#         kubeconfig: $KUBE_CONFIG # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
+#       id: setcontext
       
     - name: Deploy Jupyterhub
       run: |
