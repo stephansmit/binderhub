@@ -1,5 +1,4 @@
 #!/bin/bash
-echo $USER
 kubectl --kubeconfig="$GITHUB_WORKSPACE/.kube/config" get node
 kubectl --kubeconfig="$GITHUB_WORKSPACE/.kube/config" config view
 
