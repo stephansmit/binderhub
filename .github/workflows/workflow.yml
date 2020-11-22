@@ -35,7 +35,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/deploy_kubernetes.sh
           $GITHUB_WORKSPACE/deploy_kubernetes.sh
           cp /root/.kube/config $GITHUB_WORKSPACE/
-          chmod a+r $GITHUB_WORKSPACE/
+          chmod a+r $GITHUB_WORKSPACE/config
 #          export KUBE_CONFIG=$(cat /root/.kube/config)         
 #          echo "KUBE_CONFIG=$KUBE_CONFIG" >> $GITHUB_ENV
 
