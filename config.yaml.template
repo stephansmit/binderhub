@@ -4,4 +4,4 @@ singleuser:
   lifecycleHooks:
     postStart:
       exec:
-        command: ["pip", "install", "--no-input", "CoolProp"]
+        command: ["pip", "install", "--no-input", "CoolProp", "matplotlib", "numpy", "scipy", "pandas"]
