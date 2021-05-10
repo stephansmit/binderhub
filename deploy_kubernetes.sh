@@ -34,7 +34,7 @@ az aks create \
     --resource-group $RESOURCE_GROUP \
     --ssh-key-value=$GITHUB_WORKSPACE/key.pub \
     --node-count 3 \
-    --node-vm-size Standard_D2s_v3 \
+    --node-vm-size Standard_D16_v3 \
     --service-principal=$SP_BINDERHUB_PASSID \
     --client-secret=$SP_BINDERHUB_PASSWD \
     --dns-service-ip 10.0.0.10 \
