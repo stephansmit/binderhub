@@ -4,4 +4,4 @@ singleuser:
   lifecycleHooks:
     postStart:
       exec:
-        command: ["gitpuller", "https://github.com/Fluid-Dynamics-Of-Energy-Systems-Team/RANS_Channel.git", "master", "materials-fa"]
+        command: ["pip", "install", "--no-input", "CoolProp"]
